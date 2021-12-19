@@ -38,22 +38,6 @@ class _HomePageState extends State<HomePage> {
           child: Text('Morning Brew'),
         ),
         elevation: 0,
-        actions: <Widget>[
-          Container(
-            margin: const EdgeInsets.only(right: 10),
-            child: IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Settings(),
-                  ),
-                );
-              },
-            ),
-          )
-        ],
       ),
       body: Stack(
         children: <Widget>[

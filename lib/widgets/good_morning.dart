@@ -14,32 +14,10 @@ class goodMorning extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
-        children: [
-          Text(
-            'Good Morning',
-          ),
-          date()
-        ],
+        children: [],
       ),
     );
   }
 }
 
-date() {
-  var format = DateFormat.yMd();
-  var today = format.format(DateTime.now());
-  return Container(
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(15),
-    ),
-    child: Column(
-      children: [
-        Text(
-          today,
-          textAlign: TextAlign.center,
-        ),
-      ],
-    ),
-  );
-}
+date() {}

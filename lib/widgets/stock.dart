@@ -112,7 +112,7 @@ class _stockState extends State<Stock> {
 
   reload() {
     Timer(Duration(seconds: 1), () {
-      initState();
+      _stock();
     });
   }
 }
