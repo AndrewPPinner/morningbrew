@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:morningbrew/main.dart';
 import 'package:morningbrew/widgets/coffee.dart';
 import 'package:morningbrew/widgets/data_service.dart';
-import 'package:morningbrew/widgets/good_morning.dart';
 import 'package:morningbrew/widgets/pref_service.dart';
 import 'package:morningbrew/widgets/settings.dart';
 import 'package:morningbrew/widgets/stock.dart';
+import 'package:morningbrew/widgets/to_do_list.dart';
 import 'package:morningbrew/widgets/weather.dart';
 
 class HomePage extends StatefulWidget {
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisSpacing: 10,
                 crossAxisCount: 2,
                 children: <Widget>[
-                  goodMorning(),
+                  Todo(),
                   weather(),
                   Coffee(),
                   Stock(),
