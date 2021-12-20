@@ -12,43 +12,47 @@ class Todo extends StatefulWidget {
 class _todostate extends State<Todo> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: 10, left: 7),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton.small(
-          onPressed: () {},
-          child: Icon(Icons.add),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        padding: EdgeInsets.only(top: 10, left: 7),
+        decoration: BoxDecoration(
+          color: Colors.white,
         ),
-        body: Column(
-          children: [
-            Row(
-              children: [
-                Image(
-                  image: AssetImage(
-                      'images/PinClipart.com_coffee-pot-clip-art_2896273.png'),
-                  height: 40,
-                  width: 40,
-                ),
-                Bubble(
-                  nipWidth: 5,
-                  nipHeight: 5,
-                  margin: BubbleEdges.only(top: 10),
-                  alignment: Alignment.topCenter,
-                  child: Text(
-                    'List of things to do today',
-                    style: TextStyle(fontSize: 11.65),
+        child: Scaffold(
+          floatingActionButton: FloatingActionButton.small(
+            onPressed: () {},
+            child: Icon(Icons.add),
+          ),
+          body: Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image(
+                    image: AssetImage(
+                        'images/PinClipart.com_coffee-pot-clip-art_2896273.png'),
+                    height: 35,
+                    width: 35,
                   ),
-                  color: Color(0xff1982FC),
-                  nip: BubbleNip.leftTop,
-                ),
-              ],
-            ),
-            //add to do list logic here
-          ],
+                  Bubble(
+                    nipWidth: 5,
+                    nipHeight: 5,
+                    alignment: Alignment.topLeft,
+                    margin: BubbleEdges.only(top: 5),
+                    nipOffset: 4,
+                    child: Text(
+                      'Things to get done today',
+                      style: TextStyle(fontSize: 11, color: Colors.white),
+                    ),
+                    color: Color(0xff1982FC),
+                    nip: BubbleNip.leftBottom,
+                  ),
+                ],
+              ),
+              //add to do list logic here
+            ],
+          ),
         ),
       ),
     );
