@@ -37,16 +37,20 @@ class _stockState extends State<Stock> {
       ),
       child: Column(
         children: <Widget>[
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Settings(),
-                ),
-              ).then((value) => reload());
-            },
+          Row(
+            children: [
+              IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Settings(),
+                    ),
+                  ).then((value) => reload());
+                },
+              ),
+            ],
           ),
           if (_responseAMD != null) ...[
             Image.network(

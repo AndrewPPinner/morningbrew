@@ -3,6 +3,7 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:morningbrew/widgets/add_todo.dart';
 
 class Todo extends StatefulWidget {
   @override
@@ -21,7 +22,14 @@ class _todostate extends State<Todo> {
         ),
         child: Scaffold(
           floatingActionButton: FloatingActionButton.small(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Add(),
+                ),
+              );
+            },
             child: Icon(Icons.add),
           ),
           body: Column(
