@@ -115,7 +115,7 @@ class _stockState extends State<Stock> {
   }
 
   reload() {
-    Timer(Duration(seconds: 1), () {
+    Timer(Duration(milliseconds: 500), () {
       _stock();
     });
   }
