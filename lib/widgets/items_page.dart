@@ -70,7 +70,6 @@ class _ItemWidget extends State<ItemWidget> {
                   ),
                 )
               : StaggeredGridView.countBuilder(
-                  padding: EdgeInsets.all(8),
                   itemCount: _items.length,
                   staggeredTileBuilder: (index) => StaggeredTile.fit(1),
                   crossAxisCount: 1,
