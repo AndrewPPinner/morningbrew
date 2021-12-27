@@ -1,6 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_this
 
 import 'package:flutter/material.dart';
+import 'package:morningbrew/db/todo_database.dart';
+import 'package:morningbrew/widgets/models.dart';
 
 class Add extends StatefulWidget {
   @override
@@ -8,6 +10,13 @@ class Add extends StatefulWidget {
 }
 
 class _addState extends State<Add> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  final addController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     bool keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom != 0;
@@ -31,7 +40,10 @@ class _addState extends State<Add> {
           floatingActionButton: Visibility(
             visible: !keyboardIsOpen,
             child: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                addItem();
+                Navigator.pop(context);
+              },
               child: Icon(Icons.add),
             ),
           ),
@@ -39,6 +51,7 @@ class _addState extends State<Add> {
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: TextField(
               maxLines: null,
+              controller: addController,
               decoration: InputDecoration(
                 hintText: 'Add to To-Do List',
               ),
@@ -47,5 +60,10 @@ class _addState extends State<Add> {
         ),
       ),
     );
+  }
+
+  Future addItem() async {
+    final item = Item(title: addController.text);
+    await TodoDatabase.instance.create(item);
   }
 }

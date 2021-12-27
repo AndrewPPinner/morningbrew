@@ -4,6 +4,8 @@ import 'package:bubble/bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:morningbrew/widgets/add_todo.dart';
+import 'package:morningbrew/widgets/items_page.dart';
+import 'package:morningbrew/widgets/todo_listview.dart';
 
 class Todo extends StatefulWidget {
   @override
@@ -21,17 +23,6 @@ class _todostate extends State<Todo> {
           color: Colors.white,
         ),
         child: Scaffold(
-          floatingActionButton: FloatingActionButton.small(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Add(),
-                ),
-              );
-            },
-            child: Icon(Icons.add),
-          ),
           body: Column(
             children: [
               Row(
@@ -59,6 +50,9 @@ class _todostate extends State<Todo> {
                 ],
               ),
               //add to do list logic here
+              Expanded(
+                child: ItemWidget(),
+              ),
             ],
           ),
         ),

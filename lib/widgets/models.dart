@@ -82,3 +82,44 @@ class SavedSettings {
 
   SavedSettings({required this.ticker1, required this.ticker2});
 }
+
+final String tableItems = 'items';
+
+class ItemFields {
+  static final List<String> values = [
+    id,
+    title,
+  ];
+
+  static final String id = '_id';
+  static final String title = 'title';
+}
+
+class Item {
+  final int? id;
+  final String title;
+
+  const Item({
+    this.id,
+    required this.title,
+  });
+
+  Item copy({
+    int? id,
+    final String? title,
+  }) =>
+      Item(
+        id: id ?? this.id,
+        title: title ?? this.title,
+      );
+
+  static Item fromJson(Map<String, Object?> json) => Item(
+        id: json[ItemFields.id] as int?,
+        title: json[ItemFields.title] as String,
+      );
+
+  Map<String, Object?> toJson() => {
+        ItemFields.id: id,
+        ItemFields.title: title,
+      };
+}
