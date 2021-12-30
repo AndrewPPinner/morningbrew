@@ -59,8 +59,18 @@ class _EditPage extends State<EditPage> {
         child: Icon(Icons.add),
       ),
       appBar: AppBar(
-        leading: editButton(),
-        actions: [deleteItem()],
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_outlined,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          deleteItem(),
+          editButton(),
+        ],
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())

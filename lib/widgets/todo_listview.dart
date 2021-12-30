@@ -17,13 +17,17 @@ class ListviewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Bubble(
+      nipWidth: 5,
+      nipHeight: 5,
       alignment: Alignment.topLeft,
       margin: BubbleEdges.only(top: 5),
+      nipOffset: 4,
       child: Text(
         item.title,
         style: TextStyle(fontSize: 11, color: Colors.white),
       ),
       color: Color(0xff1982FC),
+      nip: BubbleNip.leftBottom,
     );
   }
 }
