@@ -19,7 +19,6 @@ class _addState extends State<Add> {
 
   @override
   Widget build(BuildContext context) {
-    bool keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom != 0;
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.white,
@@ -37,15 +36,12 @@ class _addState extends State<Add> {
           ),
         ),
         body: Scaffold(
-          floatingActionButton: Visibility(
-            visible: !keyboardIsOpen,
-            child: FloatingActionButton(
-              onPressed: () {
-                addItem();
-                Navigator.pop(context);
-              },
-              child: Icon(Icons.add),
-            ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              addItem();
+              Navigator.pop(context);
+            },
+            child: Icon(Icons.add),
           ),
           body: Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
