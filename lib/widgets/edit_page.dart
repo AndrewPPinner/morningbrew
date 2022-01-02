@@ -56,7 +56,7 @@ class _EditPage extends State<EditPage> {
           editItem();
           Navigator.pop(context);
         },
-        child: Icon(Icons.add),
+        child: Icon(Icons.save),
       ),
       appBar: AppBar(
         leading: IconButton(
