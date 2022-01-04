@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unrelated_type_equality_checks
 
+import 'dart:async';
 import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
@@ -15,8 +16,11 @@ class Coffee extends StatefulWidget {
 
 class _CoffeeState extends State<Coffee> {
   String? _response;
+  bool visableText = false;
+  bool loading = true;
   @override
   void initState() {
+    notFound();
     _coffee();
     super.initState();
   }
@@ -63,8 +67,18 @@ class _CoffeeState extends State<Coffee> {
               style: TextStyle(fontWeight: FontWeight.bold),
             )
           ] else ...[
-            LinearProgressIndicator(
-              backgroundColor: Colors.grey,
+            Padding(
+              padding: const EdgeInsets.all(5),
+              child: Visibility(
+                visible: loading,
+                child: LinearProgressIndicator(
+                  backgroundColor: Colors.grey,
+                ),
+              ),
+            ),
+            Visibility(
+              visible: visableText,
+              child: Text('No coffee pot found'),
             )
           ]
         ],
@@ -78,5 +92,14 @@ class _CoffeeState extends State<Coffee> {
     setState(() => {
           _response = response,
         });
+  }
+
+  notFound() {
+    Timer(Duration(seconds: 20), () {
+      setState(() {
+        visableText = true;
+        loading = false;
+      });
+    });
   }
 }

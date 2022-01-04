@@ -9,10 +9,15 @@ import 'package:morningbrew/widgets/weather.dart';
 
 class TempRes {
   final double tempature;
-  TempRes({required this.tempature});
+  final double minTemp;
+  final double maxTemp;
+  TempRes(
+      {required this.tempature, required this.minTemp, required this.maxTemp});
   factory TempRes.fromJson(Map<String, dynamic> json) {
     final tempature = json['temp'];
-    return TempRes(tempature: tempature);
+    final minTemp = json['temp_min'];
+    final maxTemp = json['temp_max'];
+    return TempRes(tempature: tempature, minTemp: minTemp, maxTemp: maxTemp);
   }
 }
 

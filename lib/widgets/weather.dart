@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types, use_key_in_widget_constructors
 
 import 'dart:async';
 
@@ -23,7 +23,7 @@ class _weatherState extends State<weather> {
     });
 
     Timer.periodic(duration, (timer) {
-      initState();
+      super.initState();
     });
   }
 
@@ -40,7 +40,9 @@ class _weatherState extends State<weather> {
           if (_res != null) ...[
             Image.network('${_res?.iconURL}'),
             Text('${_res?.cityName}'),
-            Text('${_res?.tempInfo.tempature} °F'),
+            Text('Current: ${_res?.tempInfo.tempature} °F'),
+            Text('Low: ${_res?.tempInfo.minTemp} °F'),
+            Text('High: ${_res?.tempInfo.maxTemp}'),
             Text('${_res?.weather.desc}'),
           ] else ...[
             CircularProgressIndicator(
