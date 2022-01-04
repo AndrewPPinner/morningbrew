@@ -18,7 +18,10 @@ class _weatherState extends State<weather> {
   @override
   void initState() {
     const duration = Duration(minutes: 1);
-    getLocation();
+    Timer(Duration(milliseconds: 500), () {
+      getLocation();
+    });
+
     Timer.periodic(duration, (timer) {
       initState();
     });
