@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
@@ -18,10 +19,7 @@ class _weatherState extends State<weather> {
   @override
   void initState() {
     const duration = Duration(minutes: 1);
-    Timer(Duration(milliseconds: 500), () {
-      getLocation();
-    });
-
+    getLocation();
     Timer.periodic(duration, (timer) {
       super.initState();
     });
@@ -38,7 +36,7 @@ class _weatherState extends State<weather> {
       child: Column(
         children: [
           if (_res != null) ...[
-            Image.network('${_res?.iconURL}'),
+            CachedNetworkImage(imageUrl: '${_res?.iconURL}'),
             Text('${_res?.cityName}'),
             Text('Current: ${_res?.tempInfo.tempature} °F'),
             Text('Low: ${_res?.tempInfo.minTemp} °F'),

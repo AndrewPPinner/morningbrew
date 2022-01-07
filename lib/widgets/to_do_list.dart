@@ -49,7 +49,6 @@ class _todostate extends State<Todo> {
                   ),
                 ],
               ),
-              //add to do list logic here
               Expanded(
                 child: ItemWidget(),
               ),
