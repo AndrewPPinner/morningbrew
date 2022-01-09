@@ -3,9 +3,7 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:morningbrew/widgets/add_todo.dart';
 import 'package:morningbrew/widgets/items_page.dart';
-import 'package:morningbrew/widgets/todo_listview.dart';
 
 class Todo extends StatefulWidget {
   @override

@@ -1,14 +1,8 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
-import 'dart:ffi';
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_key_in_widget_constructors, must_call_super
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:morningbrew/main.dart';
 import 'package:morningbrew/widgets/coffee.dart';
-import 'package:morningbrew/widgets/data_service.dart';
-import 'package:morningbrew/widgets/pref_service.dart';
-import 'package:morningbrew/widgets/settings.dart';
 import 'package:morningbrew/widgets/stock.dart';
 import 'package:morningbrew/widgets/to_do_list.dart';
 import 'package:morningbrew/widgets/weather.dart';

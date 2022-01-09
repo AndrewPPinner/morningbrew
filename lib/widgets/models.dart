@@ -1,11 +1,4 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
-
-import 'dart:ffi';
-
-import 'package:flutter/cupertino.dart';
-import 'package:location/location.dart';
-import 'package:morningbrew/widgets/data_service.dart';
-import 'package:morningbrew/widgets/weather.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables, prefer_const_declarations
 
 class TempRes {
   final double tempature;

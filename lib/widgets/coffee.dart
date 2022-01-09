@@ -1,13 +1,10 @@
-// ignore_for_file: prefer_const_constructors, unrelated_type_equality_checks
+// ignore_for_file: prefer_const_constructors, unrelated_type_equality_checks, use_key_in_widget_constructors
 
 import 'dart:async';
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:morningbrew/widgets/data_service.dart';
-import 'package:morningbrew/widgets/models.dart';
 
 class Coffee extends StatefulWidget {
   @override
