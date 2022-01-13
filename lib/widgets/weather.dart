@@ -16,6 +16,7 @@ class weather extends StatefulWidget {
 
 class _weatherState extends State<weather> {
   WeatherRes? _res;
+  bool loading = true;
   @override
   void initState() {
     const duration = Duration(minutes: 1);
@@ -35,7 +36,7 @@ class _weatherState extends State<weather> {
       ),
       child: Column(
         children: [
-          if (_res != null) ...[
+          if (loading != true) ...[
             CachedNetworkImage(imageUrl: '${_res?.iconURL}'),
             Text('${_res?.cityName}'),
             Text('Current: ${_res?.tempInfo.tempature} °F'),
@@ -80,6 +81,9 @@ class _weatherState extends State<weather> {
     String lon = _locationData.longitude.toString();
     final _dataService = DataService();
     final response = await _dataService.getWeather(lat, lon);
-    setState(() => _res = response);
+    setState(() {
+      _res = response;
+      loading = false;
+    });
   }
 }
