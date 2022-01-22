@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:morningbrew/widgets/data_service.dart';
 import 'package:morningbrew/widgets/models.dart';
+import 'package:http/http.dart' as http;
 
 class weather extends StatefulWidget {
   @override
@@ -16,7 +17,6 @@ class weather extends StatefulWidget {
 
 class _weatherState extends State<weather> {
   WeatherRes? _res;
-  bool loading = true;
   @override
   void initState() {
     const duration = Duration(minutes: 1);
@@ -34,26 +34,44 @@ class _weatherState extends State<weather> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
       ),
-      child: Column(
-        children: [
-          if (loading != true) ...[
-            CachedNetworkImage(imageUrl: '${_res?.iconURL}'),
-            Text('${_res?.cityName}'),
-            Text('Current: ${_res?.tempInfo.tempature} °F'),
-            Text('Low: ${_res?.tempInfo.minTemp} °F'),
-            Text('High: ${_res?.tempInfo.maxTemp}'),
-            Text('${_res?.weather.desc}'),
-          ] else ...[
-            CircularProgressIndicator(
-              backgroundColor: Colors.blueGrey,
-            )
-          ]
-        ],
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton.small(
+          onPressed: () {
+            getLocation();
+          },
+          child: Icon(Icons.refresh),
+        ),
+        body: Center(
+          child: FutureBuilder(
+            future: http.get(
+              Uri.https("openweathermap.org", "/img/wn/10n@2x.png"),
+            ),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return Column(
+                  children: [
+                    if (_res != null) ...[
+                      CachedNetworkImage(imageUrl: '${_res?.iconURL}'),
+                      Text('${_res?.cityName}'),
+                      Text('Current: ${_res?.tempInfo.tempature} °F'),
+                      Text('Low: ${_res?.tempInfo.minTemp} °F'),
+                      Text('High: ${_res?.tempInfo.maxTemp}'),
+                      Text('${_res?.weather.desc}'),
+                    ] else
+                      ...[]
+                  ],
+                );
+              } else {
+                return CircularProgressIndicator();
+              }
+            },
+          ),
+        ),
       ),
     );
   }
 
-  void getLocation() async {
+  getLocation() async {
     Location location = Location();
 
     bool _serviceEnabled;
@@ -83,7 +101,6 @@ class _weatherState extends State<weather> {
     final response = await _dataService.getWeather(lat, lon);
     setState(() {
       _res = response;
-      loading = false;
     });
   }
 }
