@@ -41,6 +41,7 @@ class _weatherState extends State<weather> {
         floatingActionButton: FloatingActionButton.small(
           onPressed: () {
             runApp(App());
+            initState();
           },
           child: Icon(Icons.refresh),
         ),
